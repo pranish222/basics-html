@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULSE — Elite Strength &amp; Conditioning</title>
+<style>
+  /* Base & Typography */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #111;
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 {
+    margin: 0 0 0.5em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 { font-size: 2.5rem; line-height: 1.1; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0 0 1em; color: #444; }
+
+  /* Navigation (Fixed Header across top) */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .logo { 
+    font-weight: 800; 
+    font-size: 1.25rem; 
+    text-decoration: none; 
+    color: #000; 
+  }
+  
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: #000; }
+
+  /* Layout Containers */
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 70px 20px 0 20px; /* Top padding offsets the fixed header */
+  }
+
+  footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  section {
+    padding: 40px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: #333; }
+
+  /* Hero Section */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero img { width: 100%; border-radius: 8px; }
+
+  /* Grid Layouts (Programs, Gallery, Pricing, Coaches) */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* Schedule Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  th { background: #f8f8f8; font-weight: 600; }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Form */
+  form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  fieldset {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 650px) {
+    .hero { grid-template-columns: 1fr; }
+    .header-container { 
+      flex-direction: column; 
+      gap: 10px; 
+      padding: 15px 20px; 
+      height: auto; 
+    }
+    main { padding-top: 110px; }
+    nav a { margin: 0 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <a href="#" class="logo">PULSE</a>
+    <nav>
+      <a href="#programs">Programs</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#join" class="btn">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Train with purpose.</h1>
+      <p>Strength and conditioning coaching built around real progress — no guesswork, no flash.</p>
+      <a href="#join" class="btn">Book a Free Session</a>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="Barbell lifting">
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section id="programs">
+    <h2>Programs</h2>
+    <div class="grid-4">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Strength">
+        <h3>Strength Training</h3>
+        <p>Barbell fundamentals, progressive overload, and coaching on every lift.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?auto=format&fit=crop&w=600&q=80" alt="HIIT">
+        <h3>HIIT Circuits</h3>
+        <p>Forty-five minutes, full body, zero wasted time.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" alt="Yoga">
+        <h3>Yoga Flow</h3>
+        <p>Mobility and breathwork to keep your training pain-free.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" alt="Boxing">
+        <h3>Boxing</h3>
+        <p>Footwork, combinations, and pad work for every skill level.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule">
+    <h2>Weekly Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>6:00 AM</strong></td>
+          <td>Strength</td>
+          <td>HIIT</td>
+          <td>Strength</td>
+          <td>HIIT</td>
+          <td>Strength</td>
+        </tr>
+        <tr>
+          <td><strong>7:00 AM</strong></td>
+          <td>Boxing</td>
+          <td>Open Gym</td>
+          <td>Yoga Flow</td>
+          <td>Boxing</td>
+          <td>HIIT</td>
+        </tr>
+        <tr>
+          <td><strong>8:00 AM</strong></td>
+          <td>Strength</td>
+          <td>Strength</td>
+          <td>Yoga Flow</td>
+          <td>Strength</td>
+          <td>Open Gym</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Inside the Studio</h2>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80" alt="Gym Floor">
+      <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80" alt="Kettlebells">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Yoga Studio">
+      <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=600&q=80" alt="Weights">
+    </div>
+  </section>
+
+  <!-- Coaches -->
+  <section id="coaches">
+    <h2>Coaches</h2>
+    <div class="grid-3">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=400&q=80" alt="Amara Diallo">
+        <h3>Amara Diallo</h3>
+        <p>Strength &amp; Powerlifting</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=400&q=80" alt="Leo Marchetti">
+        <h3>Leo Marchetti</h3>
+        <p>HIIT &amp; Conditioning</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Priya Nair">
+        <h3>Priya Nair</h3>
+        <p>Yoga &amp; Mobility</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Drop-In</h3>
+        <p><strong>$25</strong> / class</p>
+        <p>Single session pass.</p>
+      </div>
+      <div class="card" style="border-color: #000;">
+        <h3>Monthly</h3>
+        <p><strong>$149</strong> / month</p>
+        <p>Unlimited classes.</p>
+      </div>
+      <div class="card">
+        <h3>Annual</h3>
+        <p><strong>$1,290</strong> / year</p>
+        <p>Two months free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sign Up -->
+  <section id="join">
+    <h2>Start Your Free Week</h2>
+    <form>
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Jordan Blake" required>
+      </div>
+      <div>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jordan@example.com" required>
+      </div>
+      <fieldset>
+        <legend>Select Plan</legend>
+        <label><input type="radio" name="plan" checked> Drop-In</label><br>
+        <label><input type="radio" name="plan"> Monthly</label><br>
+        <label><input type="radio" name="plan"> Annual</label>
+      </fieldset>
+      <button type="submit" class="btn">Claim Free Week</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div>© 2026 PULSE Studio</div>
+  <div>Built for progress.</div>
+</footer>
+
+</body>
+</html>
